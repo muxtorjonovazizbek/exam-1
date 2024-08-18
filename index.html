@@ -11,10 +11,15 @@
 
     <div class="container">
         <div class="row mt-4">
+          <div class="d-flex align-items-center justify-content-between">
             <div>
                 <button class="btn btn-primary my-2" id="addProduct">Add Product</button>
             </div>
+            <!-- <div>
+                <input type="text" placeholder="Search" class="form-control" id="search" onkeyup="handleSearch(event)">
+            </div> -->
 
+          </div>
             <table class="table table-bordered table-hovered mt-4">
                 <thead>
                     <tr>
@@ -23,7 +28,6 @@
                         <th>Price</th>
                         <th>Brand</th>
                         <th>Color</th>
-                        <th>Year</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -46,14 +50,14 @@
                             <!-- <input type="text" placeholder="Enter company" class="form-control my-2" name="company" onkeyup="handleChange(event)"> -->
                             <input type="number" placeholder="Enter price" class="form-control" name="price" onchange="handleChange(event)">
                             <select name="brand" class="form-control my-2" onchange="handleChange(event)">
-                            <option value="" selected hidden >Choose Brand</option>
-                            <option value="Apple">Apple</option>
-                            <option value="Samsung">Samsung</option>
-                            <option value="Redmi">Redmi</option>
+                                <option value="" selected hidden >Choose Brand</option>
+                                <option value="Apple">Apple</option>
+                                <option value="Samsung">Samsung</option>
+                                <option value="Redmi">Redmi</option>
                             </select>
                             <label for="">Choose color:</label>
                             <input type="color" placeholder="Enter name" class="form-control w-25 " name="color" onchange="handleChange(event)">
-                            <input type="number" placeholder="Enter year" class="form-control my-2" name="year" onchange="handleChange(event)">
+                            <!-- <input type="number" placeholder="Enter year" class="form-control my-2" name="year" onchange="handleChange(event)"> -->
                         </form>
                     </div>
 

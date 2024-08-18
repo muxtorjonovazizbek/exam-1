@@ -2,14 +2,21 @@ const add__product = document.getElementById("addProduct")
 const user__modal = document.getElementById("user__modal")
 const result = document.getElementById("result")
 const save = document.getElementById("save")
+const searchInput = document.getElementById("search")
+
+
 let form = {}
 let products = []
-let editId = null
+let editId
+// let search = ""
 let baseUrl = "http://localhost:3000/product"
 
+
 document.addEventListener("DOMContentLoaded", () => {
-    add__product.addEventListener("click", openModal)
+    add__product.addEventListener("click", openModal)   
     save.addEventListener("click", saveModal)
+
+    // searchInput.addEventListener("input",handleSearch)
     getProducts()
 })
    
@@ -32,6 +39,8 @@ function toggleModal(status) {
 function handleChange(event) {
     const {name,value} = event.target
     form = {...form, [name]:value}
+
+    
 }
 
 async function saveModal() {
@@ -44,7 +53,9 @@ if (editId) {
             },
             body: JSON.stringify(form)
         })
+        editId = null
         getProducts()
+        toggleModal("none")
     } catch (error) {
         console.log(error);
         
@@ -59,7 +70,9 @@ if (editId) {
             body: JSON.stringify(form)
         })
         console.log(response);
+        search = ""
         getProducts()
+        toggleModal("none")
     } catch (error) {
         console.log(error);
         
@@ -75,6 +88,7 @@ async function getProducts() {
         const response = await fetch(`${baseUrl}`)
         products = await response.json()
         displayProduct()
+        toggleModal("none")
     } catch (error) {
         console.log(error);
         
@@ -82,9 +96,15 @@ async function getProducts() {
 }
 
 
+
 function displayProduct() {
+   
     result.innerHTML = ""
-    products.forEach((val, ind) => {
+    // const filteredProduct = products.filter(val => val.name.toLowerCase().includes(search.toLowerCase()))
+    // console.log(filteredProduct);
+    
+    
+        products.forEach((val, ind) => {
         let tr = document.createElement("tr")
         tr.innerHTML = `
             <td>${ind + 1}</td>
@@ -92,7 +112,6 @@ function displayProduct() {
             <td>${val.price}</td>
             <td>${val.brand}</td>
             <td>${val.color}</td>
-            <td>${val.year}</td>
             <td>
                 <button class="btn btn-primary mx-1" onclick="editProducts('${val.id}')">Edit</button>
                 <button class="btn btn-danger mx-1" onclick="delProducts('${val.id}')">Del</button>
@@ -101,6 +120,11 @@ function displayProduct() {
         result.appendChild(tr)
     })
 }
+
+// function handleSearch(event) {
+//     search = event.target.value  
+//     displayProduct() 
+// }
 
 async function delProducts(id) {
     console.log(id);
@@ -120,9 +144,9 @@ async function delProducts(id) {
 }
 
 
-    async function editProducts(id) {
-        editId = id
-        let product = products.find(item => item.id == id)
+async function editProducts(id) {
+    editId = id
+    let product = products.find(item => item.id == id)
         form = {...product}
         toggleModal("block")
         
@@ -130,7 +154,7 @@ async function delProducts(id) {
         document.querySelector("input[name='price']").value  = form.price
         document.querySelector("input[name='brand']").value  = form.brand
         document.querySelector("input[name='color']").value = form.color
-        document.querySelector("input[name='year']").value  = form.year
+     
         
     }
     

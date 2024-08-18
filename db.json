@@ -1,24 +1,3 @@
 {
-  "product": [
-    {
-      "id": "a82a",
-      "name": "samsung S 24",
-      "price": "30000",
-      "brand": "Samsung",
-      "color": "#c93b3b",
-      "year": "2102"
-    },
-    {
-      "id": "b8fa",
-      "name": "samsung S 24"
-    },
-    {
-      "id": "3506",
-      "name": "samsung S 25",
-      "price": "3000",
-      "brand": "Samsung",
-      "color": "#9e1010",
-      "year": "2025"
-    }
-  ]
+  "product": []
 }
