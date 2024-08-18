@@ -1,3 +1,21 @@
 {
-  "product": []
+  "product": [
+    {
+      "id": "7c71",
+      "name": "samsung S 24",
+      "price": "2000",
+      "brand": "Samsung",
+      "color": "#c92c2c"
+    },
+    {
+      "id": "b93a",
+      "name": "redmi note  3",
+      "price": "31320",
+      "brand": "Samsung",
+      "color": "#210d0d"
+    },
+    {
+      "id": "53b9"
+    }
+  ]
 }
